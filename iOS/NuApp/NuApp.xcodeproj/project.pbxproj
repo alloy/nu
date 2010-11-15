@@ -72,6 +72,7 @@
 		22A292B411DE6E18008B1084 /* main.nu in Resources */ = {isa = PBXBuildFile; fileRef = 2283091911DE6B7800A5C690 /* main.nu */; };
 		22A2932E11DE8450008B1084 /* handlers.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A2932D11DE8450008B1084 /* handlers.m */; };
 		22E7304A11AB5E210014052A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E7304811AB5E210014052A /* main.m */; };
+		5167862E1291436B001CA283 /* exception.m in Sources */ = {isa = PBXBuildFile; fileRef = 5167862D1291436B001CA283 /* exception.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -189,6 +190,8 @@
 		22A2932D11DE8450008B1084 /* handlers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = handlers.m; path = ../../util/handlers.m; sourceTree = "<group>"; };
 		22B4F2E311DEBD53009C693F /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
 		22E7304811AB5E210014052A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5167862C1291436B001CA283 /* exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exception.h; sourceTree = "<group>"; };
+		5167862D1291436B001CA283 /* exception.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exception.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +280,8 @@
 		2283087211DE5F0100A5C690 /* objc */ = {
 			isa = PBXGroup;
 			children = (
+				5167862C1291436B001CA283 /* exception.h */,
+				5167862D1291436B001CA283 /* exception.m */,
 				22B4F2E311DEBD53009C693F /* main.h */,
 				2283087311DE5F0100A5C690 /* block.h */,
 				2283087411DE5F0100A5C690 /* block.m */,
@@ -507,6 +512,7 @@
 				228308CB11DE5F0100A5C690 /* symbol.m in Sources */,
 				228308CC11DE5F0100A5C690 /* testhelper.m in Sources */,
 				22A2932E11DE8450008B1084 /* handlers.m in Sources */,
+				5167862E1291436B001CA283 /* exception.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
