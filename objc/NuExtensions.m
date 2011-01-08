@@ -84,23 +84,23 @@ extern id Nu__null;
 // When an unknown message is received by an array, treat it as a call to objectAtIndex:
 - (id) handleUnknownMessage:(NuCell *) method withContext:(NSMutableDictionary *) context
 {
-    id m = [[method car] evalWithContext:context];
-    if ([m isKindOfClass:[NSNumber class]]) {
-        int mm = [m intValue];
-        if (mm < 0) {
-            // if the index is negative, index from the end of the array
-            mm += [self count];
-        }
-        if ((mm < [self count]) && (mm >= 0)) {
-            return [self objectAtIndex:mm];
-        }
-        else {
-            return Nu__null;
+    if (![[method car] isKindOfClass:[NuSymbol class]]) {
+        id m = [[method car] evalWithContext:context];
+        if ([m isKindOfClass:[NSNumber class]]) {
+            int mm = [m intValue];
+            if (mm < 0) {
+                // if the index is negative, index from the end of the array
+                mm += [self count];
+            }
+            if ((mm < [self count]) && (mm >= 0)) {
+                return [self objectAtIndex:mm];
+            }
+            else {
+                return Nu__null;
+            }
         }
     }
-    else {
-        return [super handleUnknownMessage:method withContext:context];
-    }
+    return [super handleUnknownMessage:method withContext:context];
 }
 
 // This default sort method sorts an array using its elements' compare: method.

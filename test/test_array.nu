@@ -3,6 +3,12 @@
 ;;
 ;;  Copyright (c) 2007 Tim Burks, Neon Design Technology, Inc.
 
+(class NSObject
+  (- (id) handleUnknownMessage:(id)message withContext:(id)context is
+    "from NSObject"
+  )
+)
+
 (class TestArray is NuTestCase
      
      (- testCreate is
@@ -117,4 +123,5 @@
         (assert_equal 2 (a -2))
         (assert_equal 1 (a -3))
         (assert_equal nil (a 3))
-        (assert_equal nil (a -4))))
+        (assert_equal nil (a -4))
+        (assert_equal "from NSObject" (a dontknow))))
