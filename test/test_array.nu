@@ -124,4 +124,6 @@
         (assert_equal 1 (a -3))
         (assert_equal nil (a 3))
         (assert_equal nil (a -4))
-        (assert_equal "from NSObject" (a dontknow))))
+        (set i 0)
+        (assert_equal 1 (a i)) ; ensure local variables take precedence
+        (assert_equal "from NSObject" (a dontknow)))) ; finally dispatch unkown messages to super imp

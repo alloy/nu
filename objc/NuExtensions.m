@@ -84,8 +84,9 @@ extern id Nu__null;
 // When an unknown message is received by an array, treat it as a call to objectAtIndex:
 - (id) handleUnknownMessage:(NuCell *) method withContext:(NSMutableDictionary *) context
 {
-    if (![[method car] isKindOfClass:[NuSymbol class]]) {
-        id m = [[method car] evalWithContext:context];
+    id car = [method car];
+    if (![car isKindOfClass:[NuSymbol class]] || [context objectForKey:car]) {
+        id m = [car evalWithContext:context];
         if ([m isKindOfClass:[NSNumber class]]) {
             int mm = [m intValue];
             if (mm < 0) {

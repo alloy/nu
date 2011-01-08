@@ -69,7 +69,9 @@
         (assert_equal 1 (mylist -3))
         (assert_equal nil (mylist 3))
         (assert_equal nil (mylist -4))
-        (assert_equal "from NSObject" (mylist dontknow)))
+        (set i 0)
+        (assert_equal 1 (mylist i)) ; ensure local variables take precedence
+        (assert_equal "from NSObject" (mylist dontknow))) ; finally dispatch unkown messages to super imp
      
      (- testLength is
         (set mylist '(1 2 3 4))
