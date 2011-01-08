@@ -167,19 +167,18 @@ limitations under the License.
             }
             if (valid) return cursor;
         }
-    }
-    id m = [[method car] evalWithContext:context];
-    if ([m isKindOfClass:[NSNumber class]]) {
-        int mm = [m intValue];
-        if (mm < 0) {
-            // if the index is negative, index from the end of the array
-            mm += [self length];
+    } else {
+        id m = [[method car] evalWithContext:context];
+        if ([m isKindOfClass:[NSNumber class]]) {
+            int mm = [m intValue];
+            if (mm < 0) {
+                // if the index is negative, index from the end of the array
+                mm += [self length];
+            }
+            return [self objectAtIndex:mm];
         }
-        return [self objectAtIndex:mm];
     }
-    else {
-        return [super handleUnknownMessage:method withContext:context];
-    }
+    return [super handleUnknownMessage:method withContext:context];
 }
 
 - (id) lastObject

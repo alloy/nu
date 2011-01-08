@@ -3,6 +3,12 @@
 ;;
 ;;  Copyright (c) 2007 Tim Burks, Neon Design Technology, Inc.
 
+(class NSObject
+  (- (id) handleUnknownMessage:(id)message withContext:(id)context is
+    "from NSObject"
+  )
+)
+
 (class TestList is NuTestCase
      (- testPair? is
         (assert_false (pair? nil))
@@ -62,7 +68,8 @@
         (assert_equal 2 (mylist -2))
         (assert_equal 1 (mylist -3))
         (assert_equal nil (mylist 3))
-        (assert_equal nil (mylist -4)))
+        (assert_equal nil (mylist -4))
+        (assert_equal "from NSObject" (mylist dontknow)))
      
      (- testLength is
         (set mylist '(1 2 3 4))
