@@ -1607,6 +1607,9 @@ id loadNuLibraryFile(NSString *nuFileName, id parser, id context, id symbolTable
             #endif
             if (string) {
                 id body = [parser parse:string asIfFromFilename:[fileName cStringUsingEncoding:NSUTF8StringEncoding]];
+                // TODO Temporary quick hack to get access to the current file
+                NuSymbol *currentFile = [[NuSymbolTable sharedSymbolTable] symbolWithString:@"$CurrentFile"];
+                [currentFile setValue:fileName];
                 [body evalWithContext:context];
                 return [symbolTable symbolWithCString:"t"];
             }
