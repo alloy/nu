@@ -176,6 +176,9 @@ limitations under the License.
 /*! Get a representation of the string that can be used in Nu source code. */
 - (NSString *) escapedStringRepresentation;
 
+- (NSString *) expandPath;
+- (NSString *) expandPathRelativeTo:(id)relativeTo;
+
 /*! Split a string into lines. */
 - (NSArray *) lines;
 

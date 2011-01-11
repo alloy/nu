@@ -392,6 +392,34 @@ extern id Nu__null;
     return result;
 }
 
+- (NSString *) expandPath
+{
+  return [self expandPathRelativeTo:[NSNull null]];
+}
+
+- (NSString *) expandPathRelativeTo:(id)relativeTo
+{
+    NSString *res = self;
+
+    if ([res isAbsolutePath]) {
+      res = [res stringByResolvingSymlinksInPath];
+    } else {
+      NSString *dir = (relativeTo != [NSNull null] ?
+          (NSString *)relativeTo : [[NSFileManager defaultManager] currentDirectoryPath]);
+      if (![dir isAbsolutePath]) {
+        dir = [dir expandPath];
+      }
+
+      // stringByStandardizingPath does not expand "/." to "/".
+      if ([res isEqualToString:@"."] && [dir isEqualToString:@"/"]) {
+        res = @"/";
+      } else {
+        res = [[dir stringByAppendingPathComponent:res] stringByStandardizingPath];
+      }
+    }
+    return res;
+}
+
 - (id) evalWithContext:(NSMutableDictionary *) context
 {
     NSMutableString *result;

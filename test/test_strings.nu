@@ -153,4 +153,15 @@ END)
         (assert_equal "HELLO, WORLD" finish))
      
      (- (id) testAddingNilToStrings is
-        (assert_equal "hello world" (+ "hello" nil " " nil "world"))))
+        (assert_equal "hello world" (+ "hello" nil " " nil "world")))
+
+     (- (id) testFilePathExpansion is
+       (set fileManager (NSFileManager defaultManager))
+       (set wd (fileManager currentDirectoryPath))
+
+       (assert_equal (+ wd "/relative/to/work/dir") ("relative/to/irrelavent1/../irrelavent2/../work/dir" expandPath))
+       (assert_equal ("~/a/dir/in/the/users/home" stringByStandardizingPath) ("~/a/dir/in/irrelavent1/../irrelavent2/../the/users/home" expandPath))
+       (assert_equal "/relative/to/a/given/path" ("a/given/path" expandPathRelativeTo:"/relative/to"))
+
+       ; TODO make sure absolute paths do not change
+     ))
