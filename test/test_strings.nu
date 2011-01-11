@@ -161,6 +161,8 @@ END)
 
        (assert_equal (+ wd "/relative/to/work/dir") ("relative/to/irrelavent1/../irrelavent2/../work/dir" expandPath))
        (assert_equal ("~/a/dir/in/the/users/home" stringByStandardizingPath) ("~/a/dir/in/irrelavent1/../irrelavent2/../the/users/home" expandPath))
+
+       (assert_equal (+ wd "/relative/to/work/dir") ("relative/to/irrelavent1/../irrelavent2/../work/dir" expandPathRelativeTo:nil))
        (assert_equal "/relative/to/a/given/path" ("a/given/path" expandPathRelativeTo:"/relative/to"))
 
        ; TODO make sure absolute paths do not change
